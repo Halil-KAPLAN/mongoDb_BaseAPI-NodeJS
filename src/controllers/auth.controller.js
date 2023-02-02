@@ -2,11 +2,22 @@ const userModel = require("../models/user.model");
 const bcrypt = require("bcrypt");
 const APIError = require("../utils/errors");
 const Response = require("../utils/response");
+const { createToken } = require("../middlewares/auth");
 
 const login = async (req, res) => {
-  console.log(req.body);
+  const { email, password } = req.body;
 
-  return res.json(req.body);
+  const userInfo = await userModel.findOne({ email });
+  if (!userInfo) {
+    throw new APIError("Username or Password is wrong.", 401);
+  }
+
+  const comparePasspowrd = await bcrypt.compare(password, userInfo.password);
+  if (!comparePasspowrd) {
+    throw new APIError("Username or Password is wrong.", 401);
+  }
+
+  createToken(userInfo, res);
 };
 
 const register = async (req, res) => {
