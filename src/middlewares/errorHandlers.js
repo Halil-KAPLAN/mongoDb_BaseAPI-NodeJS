@@ -6,6 +6,9 @@ const errorHandlerMiddleware = (err, req, res, next) => {
       .status(err.statusCode || 400)
       .json({ success: false, message: err.message });
   }
+
+  console.log(err);
+
   return res.status(500).json({
     success: false,
     message: "API Error, Please check !",
