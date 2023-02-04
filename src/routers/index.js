@@ -1,7 +1,8 @@
 const router = require("express").Router();
+const authRouter = require("./auth.router");
+const upload = require("./auth.upload");
 
-const auth = require("./auth.router");
-
-router.use(auth);
+router.use(authRouter);
+router.use(upload);
 
 module.exports = router;
