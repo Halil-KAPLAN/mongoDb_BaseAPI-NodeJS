@@ -11,6 +11,8 @@ const corsOptions = require("./src/helpers/corsOptions");
 const mongoSanitize = require("express-mongo-sanitize");
 const path = require("path");
 const apiLimitter = require("./src/middlewares/rateLimit");
+const moment = require('moment-timezone');
+moment.tz.setDefault("Europa/Istanbul")
 
 //Middlewares
 app.use(express.json());

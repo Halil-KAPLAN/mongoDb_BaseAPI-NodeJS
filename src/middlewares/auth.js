@@ -11,7 +11,7 @@ const createToken = async (user, res) => {
   };
   const token = await jwt.sign(payload, process.env.JWT_SECRET_KEY, {
     algorithm: "HS512",
-    expiresIn: process.env.JWT_EXPIRES_IN,
+    expiresIn: process.env.JWT_EXPIRESSECRET_IN,
   });
 
   return res.status(201).json({
@@ -50,7 +50,46 @@ const checkToken = async (req, res, next) => {
   });
 };
 
+const createTemporaryToken = async (userId, email) => {
+  const payload = {
+    sub: userId,
+    email,
+  };
+  const token = await jwt.sign(payload, process.env.JWT_TEMPORARY_KEY, {
+    algorithm: "HS512",
+    expiresIn: process.env.JWT_TEMPORARYEXPIRES_IN,
+  });
+
+  return "Bearer " + token;
+};
+
+const decodedTemporaryToken = async (temporaryToken) => {
+  const token = temporaryToken.split(" ")[1];
+  let userInfo;
+
+
+  await jwt.verify(
+    token,
+    process.env.JWT_TEMPORARY_KEY,
+    async (err, decoded) => {
+      if (err) throw new APIError("Invalid token !", 401);
+      console.log("decoded "+ decoded);
+
+      userInfo = await userModel
+        .findById(decoded.sub)
+        .select("_id firstName lastName email");
+      if (!userInfo) {
+        throw new APIError("Invalid token", 401);
+      }
+    }
+  );
+
+  return userInfo;
+};
+
 module.exports = {
   createToken,
   checkToken,
+  createTemporaryToken,
+  decodedTemporaryToken,
 };
