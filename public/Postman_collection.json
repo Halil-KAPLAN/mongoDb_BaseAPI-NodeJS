@@ -1,0 +1,230 @@
+{
+	"info": {
+		"_postman_id": "9c79c99a-c900-4f19-8f4d-341f581c1358",
+		"name": "mongoDB-BaseAPI-NodeJS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7962593"
+	},
+	"item": [
+		{
+			"name": "Mainpage",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"halil-kaplan@windowslive.com\",\r\n    \"password\":\"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\":\"test2\",\r\n    \"lastName\":\"test2\",\r\n    \"email\":\"test@test2.com\",\r\n    \"password\":\"1234567\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "me",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2M2RiMWFmYzY5OTU5Mjg5MWMxOWMyMjkiLCJmaXJzdE5hbWUiOiJ0ZXN0MiIsImlhdCI6MTY3NTQ1NjIxMSwiZXhwIjoxNjc2MDYxMDExfQ.YRHHoM4W6_-RPiBA50UKiIG6WTPl-h63NCeyMnZuPJlw8IoCRT6V5_Z46ZzvNnb0bqUgnvS40MEpaCPLmx-cbA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "images",
+							"type": "file",
+							"src": "7viNhx-u5/74dc5254a8c897e3d82efb96908180d3d96c1638_full.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Forget Password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"halil-kaplan@windowslive.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/forget-password",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"forget-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Code Check",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"halil-kaplan@windowslive.com\",\r\n    \"code\":\"8386fd\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/reset-code-check",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"reset-code-check"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"password\":\"123456\",\r\n    \"temporaryToken\":\"Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2M2Q5OTc5MGQ5MzgyMGI3N2Y3M2Q5YzgiLCJlbWFpbCI6ImhhbGlsLWthcGxhbkB3aW5kb3dzbGl2ZS5jb20iLCJpYXQiOjE2NzU5MDI1NDEsImV4cCI6MTY3NTkwMjcyMX0.4xxP4OGAoeSscKNcWsJun-Mo2ObQbva-Q-uljdYva4M79ZPHDdZAacAwYzF-hexmHAUa91h30Sclu-FUFxkRCA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/reset-password",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"reset-password"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
